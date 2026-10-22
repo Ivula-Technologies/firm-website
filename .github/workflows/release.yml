@@ -1,0 +1,25 @@
+name: Release
+
+# Push a tag like v1.1.0 to publish cwm-theme.zip as a GitHub release.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the tag matches the theme version
+        run: |
+          v=$(grep -m1 '^Version:' theme/cwm/style.css | awk '{print $2}')
+          test "v$v" = "${GITHUB_REF_NAME}" || { echo "Tag ${GITHUB_REF_NAME} does not match theme version $v"; exit 1; }
+      - name: Zip the theme
+        run: cd theme && zip -rq ../cwm-theme.zip cwm -x '*.DS_Store'
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: cwm-theme.zip
+          generate_release_notes: true

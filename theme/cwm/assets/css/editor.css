@@ -1,0 +1,7 @@
+/* Brand fonts and colours inside the block editor. */
+@font-face { font-family: "Manrope"; src: url("../fonts/manrope-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; }
+@font-face { font-family: "Inter"; src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; }
+body { font-family: "Inter", system-ui, sans-serif; font-size: 17px; line-height: 1.65; color: #1F2933; }
+h1, h2, h3, h4, .editor-post-title__input { font-family: "Manrope", system-ui, sans-serif; color: #0B2545; letter-spacing: -0.015em; }
+a { color: #1F5FBF; }
+blockquote { border-left: 3px solid #C8962E; padding-left: 20px; }

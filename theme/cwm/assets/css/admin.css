@@ -1,0 +1,16 @@
+.cwm-box .cwm-field,.cwm-settings__form .cwm-field{margin:0 0 18px;max-width:820px}
+.cwm-field__label{display:block;font-weight:600;margin-bottom:6px}
+.cwm-box__intro{background:#E8F1FB;border-left:3px solid #1F5FBF;padding:10px 12px;margin:0 0 16px}
+.cwm-media{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cwm-media__preview img{max-width:60px;height:auto;vertical-align:middle;margin-right:6px;border-radius:4px}
+.cwm-repeater__rows{display:grid;gap:10px;margin-bottom:10px}
+.cwm-repeater__row{border:1px solid #dcdcde;border-radius:6px;padding:12px 12px 2px;background:#fbfbfc;position:relative}
+.cwm-repeater__tools{display:flex;gap:10px;justify-content:flex-end;margin-bottom:6px}
+.cwm-repeater__fields .cwm-field{margin-bottom:10px}
+.cwm-checklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:4px 16px}
+.cwm-icon-select{min-width:200px}
+.cwm-icon-preview{display:inline-flex;width:28px;height:28px;margin-left:8px;vertical-align:middle;color:#1F5FBF}
+.cwm-icon-preview svg{width:28px;height:28px}
+.cwm-summary p{font-size:14px}
+.cwm-settings .nav-tab-wrapper{margin-bottom:16px}
+#side-sortables .cwm-field textarea,#side-sortables .cwm-field input{width:100%}

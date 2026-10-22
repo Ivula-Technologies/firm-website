@@ -1,0 +1,92 @@
+<svg viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of the Nairobi skyline with the KICC tower, and cards showing monthly accounts, tax filings and an impact report">
+	<defs>
+		<linearGradient id="kicc" x1="0" x2="1" y1="0" y2="0">
+			<stop offset="0" stop-color="#C7D9F2"/><stop offset=".55" stop-color="#EEF4FC"/><stop offset="1" stop-color="#A9C3EA"/>
+		</linearGradient>
+		<linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0" stop-color="#2F73D6"/><stop offset="1" stop-color="#1A4C93"/>
+		</linearGradient>
+		<linearGradient id="fade" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0" stop-color="#0B2545" stop-opacity="0"/><stop offset="1" stop-color="#0B2545"/>
+		</linearGradient>
+		<filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#020B18" flood-opacity=".35"/></filter>
+		<pattern id="win" width="12" height="14" patternUnits="userSpaceOnUse"><rect x="2" y="3" width="6" height="7" rx="1" fill="#fff" fill-opacity=".16"/></pattern>
+		<pattern id="win2" width="10" height="12" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="5" height="6" rx="1" fill="#fff" fill-opacity=".22"/></pattern>
+	</defs>
+
+	<circle cx="318" cy="262" r="214" fill="#1F5FBF" fill-opacity=".2"/>
+	<circle cx="318" cy="262" r="168" fill="none" stroke="#7FA8E0" stroke-opacity=".25" stroke-dasharray="3 7"/>
+
+	<!-- Skyline -->
+	<g>
+		<rect x="58" y="300" width="58" height="146" rx="3" fill="#163A68"/>
+		<rect x="58" y="300" width="58" height="146" fill="url(#win)"/>
+		<rect x="110" y="246" width="62" height="200" rx="3" fill="#1B4680"/>
+		<rect x="110" y="246" width="62" height="200" fill="url(#win2)"/>
+		<path d="M118 246 L141 226 L164 246 Z" fill="#1B4680"/>
+		<path d="M176 446 C190 404 222 372 262 362 C300 372 324 404 336 446 Z" fill="#2A63B8" fill-opacity=".85"/>
+		<path d="M196 446 C208 412 232 390 262 382" stroke="#fff" stroke-opacity=".18" fill="none"/>
+		<!-- KICC tower -->
+		<rect x="300" y="152" width="54" height="294" fill="url(#kicc)"/>
+		<g stroke="#1F5FBF" stroke-opacity=".28" stroke-width="1.5">
+			<line x1="309" y1="160" x2="309" y2="446"/><line x1="318" y1="160" x2="318" y2="446"/><line x1="327" y1="160" x2="327" y2="446"/><line x1="336" y1="160" x2="336" y2="446"/><line x1="345" y1="160" x2="345" y2="446"/>
+		</g>
+		<ellipse cx="327" cy="152" rx="50" ry="10" fill="#EEF4FC"/>
+		<ellipse cx="327" cy="149" rx="50" ry="8" fill="#DCE8F8"/>
+		<rect x="313" y="128" width="28" height="20" fill="#C7D9F2"/>
+		<ellipse cx="327" cy="128" rx="18" ry="6" fill="#EEF4FC"/>
+		<line x1="327" y1="122" x2="327" y2="92" stroke="#EEF4FC" stroke-width="2.5" stroke-linecap="round"/>
+		<circle cx="327" cy="90" r="3" fill="#C8962E"/>
+		<!-- Right towers -->
+		<rect x="372" y="232" width="66" height="214" rx="3" fill="#1B4680"/>
+		<rect x="372" y="232" width="66" height="214" fill="url(#win)"/>
+		<rect x="432" y="292" width="54" height="154" rx="3" fill="#163A68"/>
+		<rect x="432" y="292" width="54" height="154" fill="url(#win2)"/>
+		<path d="M484 446 V262 L548 236 V446 Z" fill="url(#glass)"/>
+		<path d="M494 446 V268 M506 446 V263 M518 446 V258 M530 446 V253 M542 446 V248" stroke="#fff" stroke-opacity=".14"/>
+		<rect x="20" y="444" width="560" height="4" rx="2" fill="#7FA8E0" fill-opacity=".45"/>
+		<rect x="20" y="448" width="560" height="72" fill="url(#fade)"/>
+	</g>
+
+	<!-- Card: monthly accounts -->
+	<g filter="url(#sh)">
+		<rect x="22" y="64" width="214" height="138" rx="16" fill="#fff"/>
+		<rect x="40" y="64" width="44" height="4" rx="2" fill="#C8962E"/>
+		<text x="40" y="96" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#5B6673">Monthly accounts</text>
+		<text x="40" y="124" font-family="Manrope, sans-serif" font-size="24" font-weight="800" fill="#0B2545">On track</text>
+		<rect x="160" y="108" width="58" height="22" rx="11" fill="#E6F4F3"/>
+		<text x="189" y="123" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#1E8E8A">+18%</text>
+		<g fill="#1F5FBF">
+			<rect x="40" y="170" width="16" height="16" rx="3" fill-opacity=".35"/>
+			<rect x="62" y="162" width="16" height="24" rx="3" fill-opacity=".45"/>
+			<rect x="84" y="166" width="16" height="20" rx="3" fill-opacity=".55"/>
+			<rect x="106" y="154" width="16" height="32" rx="3" fill-opacity=".7"/>
+			<rect x="128" y="146" width="16" height="40" rx="3" fill-opacity=".85"/>
+			<rect x="150" y="140" width="16" height="46" rx="3"/>
+		</g>
+		<path d="M40 186 H218" stroke="#DCE4EE"/>
+	</g>
+
+	<!-- Card: impact -->
+	<g filter="url(#sh)">
+		<rect x="430" y="88" width="156" height="78" rx="16" fill="#fff"/>
+		<circle cx="462" cy="127" r="18" fill="#E6F4F3"/>
+		<path d="M455 133c0-8 6-14 15-15-1 9-6 15-14 15m0 0c2-4 5-7 9-9" fill="none" stroke="#1E8E8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		<text x="488" y="122" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#5B6673">Impact report</text>
+		<text x="488" y="142" font-family="Manrope, sans-serif" font-size="15" font-weight="800" fill="#0B2545">Scope 1–3</text>
+	</g>
+
+	<!-- Card: obligations -->
+	<g filter="url(#sh)">
+		<rect x="384" y="318" width="198" height="118" rx="16" fill="#fff"/>
+		<text x="402" y="346" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#5B6673">This month</text>
+		<g font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0B2545">
+			<circle cx="410" cy="368" r="8" fill="#1E8E8A"/><path d="M406 368l3 3 5-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+			<text x="426" y="373">VAT return filed</text>
+			<circle cx="410" cy="392" r="8" fill="#1E8E8A"/><path d="M406 392l3 3 5-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+			<text x="426" y="397">PAYE and SHIF paid</text>
+			<circle cx="410" cy="416" r="8" fill="#1F5FBF"/><path d="M410 412v4l3 2" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+			<text x="426" y="421" fill="#5B6673">Annual return due</text>
+		</g>
+	</g>
+</svg>
