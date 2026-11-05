@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CWM_VERSION', '1.1.0' );
+define( 'CWM_VERSION', '1.2.0' );
 define( 'CWM_DIR', get_template_directory() );
 define( 'CWM_URI', get_template_directory_uri() );
 
@@ -25,6 +25,7 @@ require CWM_DIR . '/inc/template-tags.php';
 require CWM_DIR . '/inc/seo.php';
 require CWM_DIR . '/inc/privacy.php';
 require CWM_DIR . '/inc/preview.php';
+require CWM_DIR . '/inc/tools.php';
 require CWM_DIR . '/inc/setup.php';
 require CWM_DIR . '/inc/seed.php';
 require CWM_DIR . '/inc/admin.php';

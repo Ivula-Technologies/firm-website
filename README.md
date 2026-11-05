@@ -22,6 +22,7 @@ Key controls, all under **Firm settings** in WordPress:
 | Preview mode | On | Hides the site from search engines, shows a "Preview" banner, optional password and feedback link. Untick on launch day. |
 | Switch A: Audit | Hidden | Hidden / Partner / Live. While hidden, no audit wording appears anywhere. |
 | Switch B: Team | Off | No staff names anywhere until switched on. |
+| Free tools | On | PAYE, VAT, KRA deadline countdown and an ESG readiness check at `/free-tools/` and on the homepage. Rates are editable; confirm them before launch. |
 | Launch checklist | | Lists everything still open before going live. |
 
 ## Repository layout

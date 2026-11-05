@@ -164,4 +164,80 @@
 			}
 		});
 	});
+	/* ---------- Motion (skipped when the visitor asks for less motion) ---------- */
+	var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	/* Reveal blocks as they scroll into view. Only blocks below the fold are hidden first, and the
+	   class is removed once shown so hover effects keep working. */
+	if (!calm && 'IntersectionObserver' in window) {
+		var sel = '.section-head, .group, .promise, .card, .tile, .tool-link, .deadlines__next, .deadlines__list li, .quote, .stat, .approach__step, .tool, .resource, .cta__copy, .cta__channels li, .featured-insight, .download-feature, .tools-disclaimer, .value, .faq details';
+		var fold = window.innerHeight * 0.92;
+		var pending = [];
+		var show = function (el) {
+			el.classList.add('is-in');
+			var done = function () { el.classList.remove('reveal', 'is-in'); el.style.removeProperty('--d'); };
+			el.addEventListener('transitionend', function te(ev) { if (ev.target === el && ev.propertyName === 'opacity') { el.removeEventListener('transitionend', te); done(); } });
+			setTimeout(done, 2000);
+		};
+		/* Checked on scroll rather than with an observer, so blocks skipped by a fast scroll or a jump link still appear. */
+		var check = function () {
+			checking = false;
+			var h = window.innerHeight * 0.94;
+			pending = pending.filter(function (el) {
+				if (el.getBoundingClientRect().top < h) { show(el); return false; }
+				return true;
+			});
+			if (!pending.length) window.removeEventListener('scroll', onRevealScroll);
+		};
+		var checking = false;
+		var onRevealScroll = function () { if (!checking) { checking = true; requestAnimationFrame(check); } };
+		document.querySelectorAll(sel).forEach(function (el) {
+			if (el.closest('.reveal') || el.getBoundingClientRect().top < fold) return;
+			var sibs = el.parentElement ? Array.prototype.filter.call(el.parentElement.children, function (c) { return c.matches(sel); }) : [];
+			var i = Math.max(0, sibs.indexOf(el));
+			el.style.setProperty('--d', Math.min(i, 5) * 80 + 'ms');
+			el.classList.add('reveal');
+			pending.push(el);
+		});
+		if (pending.length) { window.addEventListener('scroll', onRevealScroll, { passive: true }); window.addEventListener('resize', onRevealScroll); }
+
+		/* Count up the homepage figures, keeping any prefix or suffix ("250+", "KES 2bn"). */
+		var statIO = new IntersectionObserver(function (entries) {
+			entries.forEach(function (en) {
+				if (!en.isIntersecting) return;
+				statIO.unobserve(en.target);
+				var el = en.target, txt = el.textContent, m = txt.match(/^(\D*)([\d,]+(?:\.\d+)?)(.*)$/);
+				if (!m) return;
+				var to = parseFloat(m[2].replace(/,/g, '')), dec = (m[2].split('.')[1] || '').length, start = null;
+				var step = function (t) {
+					if (start === null) start = t;
+					var p = Math.min(1, (t - start) / 1200), v = to * (1 - Math.pow(1 - p, 3));
+					el.textContent = m[1] + v.toLocaleString('en-KE', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3];
+					if (p < 1) requestAnimationFrame(step); else el.textContent = txt;
+				};
+				requestAnimationFrame(step);
+			});
+		}, { threshold: 0.5 });
+		document.querySelectorAll('.stat__figure').forEach(function (el) { statIO.observe(el); });
+	}
+
+	/* Reading progress bar on articles. */
+	if (document.body.classList.contains('single-post')) {
+		var article = document.querySelector('.article__body, .prose, main');
+		var bar = document.createElement('div');
+		bar.className = 'read-progress';
+		bar.setAttribute('aria-hidden', 'true');
+		document.body.appendChild(bar);
+		var ticking = false;
+		var update = function () {
+			ticking = false;
+			if (!article) return;
+			var r = article.getBoundingClientRect();
+			var total = r.height - window.innerHeight * 0.6;
+			var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+			bar.style.transform = 'scaleX(' + p + ')';
+		};
+		window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+		update();
+	}
 })();
