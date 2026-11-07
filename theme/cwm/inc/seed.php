@@ -199,6 +199,8 @@ function cwm_seed() {
 	}
 
 	cwm_seed_pages();
+	cwm_tools_ensure_page();
+	update_option( 'cwm_schema', 2 );
 	cwm_seed_insights( $cat_ids );
 	cwm_seed_glossary();
 }

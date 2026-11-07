@@ -42,6 +42,17 @@ Install **WP Mail SMTP** or **FluentSMTP**, then connect it to the firm's cPanel
 5. Optional: add the GA4 ID in Firm settings. Analytics loads only after a visitor accepts cookies.
 6. Don't install Yoast or Rank Math unless the client asks. The theme already handles titles, descriptions, sitemaps, social cards and Google structured data. If one of those plugins is installed, the theme's own SEO steps aside automatically.
 
+## Free tools (Firm settings > Free tools)
+The site has a **Free tools** page (`/free-tools/`, also linked from the homepage, the Insights menu and the footer):
+- **PAYE and take-home pay**: gross salary in, net pay out, after NSSF, SHIF, the housing levy and PAYE less personal relief, plus the cost to the employer.
+- **VAT calculator**: add or remove VAT.
+- **KRA deadlines**: counts down to the next filing dates (9th for PAYE and payroll levies, 20th for VAT, instalment tax, 30 June returns).
+- **ESG readiness check**: six questions, a score out of 12 and the next three steps, with a button to the ESG service enquiry form.
+
+The rates are in **Firm settings > Free tools**, preset to February 2025 (NSSF limits 8,000 and 72,000, SHIF 2.75% with a 300 minimum, housing levy 1.5%, VAT 16%). Ask the client's tax team to confirm them, then change **Rates checked as at** to the current month; the launch checklist stays open until you do. Update them after each Finance Act. Untick **Show the free tools** to hide the page and the homepage block.
+
+All motion (the hero entrance, floating cards, the services ticker, sections fading in on scroll and the counters) switches off for visitors whose phone or computer is set to reduce motion.
+
 ## The two switches (Firm settings > Switches)
 - **Switch A, Audit**:
   - **Hidden** (the launch default): the word "audit" appears nowhere and the audit page returns "not found".

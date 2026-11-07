@@ -47,6 +47,9 @@
 					<?php if ( cwm_page_id( 'esg-hub' ) ) : ?>
 						<li><a href="<?php echo esc_url( cwm_page_url( 'esg-hub' ) ); ?>">ESG reporting hub</a></li>
 					<?php endif; ?>
+					<?php if ( cwm_tools_on() ) : ?>
+						<li><a href="<?php echo esc_url( cwm_page_url( 'tools' ) ); ?>">Free tools</a></li>
+					<?php endif; ?>
 					<li><a href="<?php echo esc_url( cwm_page_url( 'proposal' ) ); ?>">Request a proposal</a></li>
 					<li><a href="<?php echo esc_url( cwm_page_url( 'contact' ) ); ?>">Contact</a></li>
 				</ul>

@@ -58,6 +58,22 @@ function cwm_settings_tabs() {
 				array( 'key' => 'preview_feedback', 'label' => 'Feedback goes to (optional)', 'help' => 'An email address, a WhatsApp number (e.g. +254712345678) or a link. Adds "Send feedback on this page" to the banner, with the page address filled in.' ),
 			),
 		),
+		'tools'    => array(
+			'title'  => 'Free tools',
+			'fields' => array(
+				array( 'key' => 'tools_on', 'label' => 'Show the free tools (PAYE and VAT calculators, deadline countdown, ESG check)', 'type' => 'checkbox', 'help' => 'Off hides the Free tools page, its menu links and the homepage block.' ),
+				array( 'key' => 'rates_label', 'label' => 'Rates checked as at', 'help' => 'Shown under the calculators, e.g. "February 2025". Update it whenever you change a rate below, such as after each Finance Act or NSSF step-up.' ),
+				array( 'key' => 'paye_bands', 'label' => 'PAYE monthly bands', 'type' => 'textarea', 'rows' => 5, 'help' => 'One band per line as upper limit:rate%. Use * for the top band. Example: 24000:10' ),
+				array( 'key' => 'personal_relief', 'label' => 'Personal relief per month (KES)', 'type' => 'number' ),
+				array( 'key' => 'shif_rate', 'label' => 'SHIF rate (% of gross)', 'type' => 'number' ),
+				array( 'key' => 'shif_min', 'label' => 'SHIF minimum per month (KES)', 'type' => 'number' ),
+				array( 'key' => 'ahl_rate', 'label' => 'Affordable housing levy, employee share (% of gross)', 'type' => 'number' ),
+				array( 'key' => 'nssf_rate', 'label' => 'NSSF employee rate (%)', 'type' => 'number' ),
+				array( 'key' => 'nssf_lel', 'label' => 'NSSF lower earnings limit (KES)', 'type' => 'number', 'help' => 'Tier I applies up to this amount.' ),
+				array( 'key' => 'nssf_uel', 'label' => 'NSSF upper earnings limit (KES)', 'type' => 'number', 'help' => 'Tier II applies between the two limits.' ),
+				array( 'key' => 'vat_rate', 'label' => 'VAT standard rate (%)', 'type' => 'number' ),
+			),
+		),
 		'forms'    => array(
 			'title'  => 'Forms and email',
 			'fields' => array(

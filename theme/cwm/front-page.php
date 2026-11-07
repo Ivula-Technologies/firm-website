@@ -45,6 +45,28 @@ $hero_image = (int) $f( 'hero_image' );
 	</div>
 </section>
 
+<?php
+$ticker = array();
+foreach ( cwm_services() as $s ) {
+	$ticker[] = $s->post_title;
+}
+foreach ( get_posts( array( 'post_type' => 'industry', 'numberposts' => 8, 'orderby' => 'menu_order', 'order' => 'ASC' ) ) as $ind ) {
+	$ticker[] = $ind->post_title;
+}
+if ( count( $ticker ) > 3 ) :
+	$items = '';
+	foreach ( $ticker as $t ) {
+		$items .= '<li>' . esc_html( $t ) . '</li>';
+	}
+	?>
+	<div class="ticker" aria-label="Services and industries">
+		<div class="ticker__track">
+			<ul class="ticker__list"><?php echo $items; // phpcs:ignore ?></ul>
+			<ul class="ticker__list" aria-hidden="true"><?php echo $items; // phpcs:ignore ?></ul>
+		</div>
+	</div>
+<?php endif; ?>
+
 <section class="section section--services" id="services">
 	<div class="container">
 		<?php cwm_section_head( 'What we do', $f( 'services_title', 'Three things to account for' ), $f( 'services_text', 'Every business has its money, its obligations and its impact to answer for. We help with all three.' ), array( 'All services', cwm_page_url( 'services' ) ) ); ?>
@@ -81,6 +103,8 @@ $hero_image = (int) $f( 'hero_image' );
 		</div>
 	</div>
 </section>
+
+<?php cwm_home_tools(); ?>
 
 <?php
 $promises = (array) $f( 'promises', array() );

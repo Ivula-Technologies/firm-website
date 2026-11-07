@@ -66,6 +66,7 @@ function cwm_launch_checks() {
 		array( ! cwm_team_on(), 'Team section off for launch', cwm_team_on() ? 'It is on.' : 'Off. No names or photos appear anywhere.', $s . '&tab=switches' ),
 		array( 0 === count( $team_all ) || cwm_team_on(), 'No dummy team profiles in the database', count( $team_all ) . ' team member record(s) exist. Delete any test profiles before launch.', admin_url( 'edit.php?post_type=team_member' ) ),
 		array( count( $services ) === $with_pdf, 'Service profile PDFs (optional)', $with_pdf . ' of ' . count( $services ) . ' services have a PDF. Buttons hide where there is none.', admin_url( 'edit.php?post_type=service' ) ),
+		array( cwm_opt( 'rates_label' ) !== $d['rates_label'], 'Free tools rates confirmed', 'The PAYE and VAT calculators use the rates in Firm settings > Free tools. Check them against the latest Finance Act, then change "Rates checked as at" to today\'s month.', $s . '&tab=tools' ),
 		array( (bool) get_option( 'blog_public' ), 'Search engines allowed', 'Settings > Reading > untick "Discourage search engines" when you go live.', admin_url( 'options-reading.php' ) ),
 		array( is_ssl() || 0 === strpos( home_url(), 'https://' ), 'Site served over HTTPS', 'Run AutoSSL in cPanel, then set both addresses in Settings > General to https://.', admin_url( 'options-general.php' ) ),
 	);

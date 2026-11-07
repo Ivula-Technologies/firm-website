@@ -120,7 +120,7 @@ function cwm_render_field( $f, $value, $name ) {
 
 		default:
 			$input_type = in_array( $type, array( 'url', 'email', 'number', 'date' ), true ) ? $type : 'text';
-			echo '<input class="widefat" type="' . esc_attr( $input_type ) . '" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="' . esc_attr( (string) $value ) . '"' . ( isset( $f['placeholder'] ) ? ' placeholder="' . esc_attr( $f['placeholder'] ) . '"' : '' ) . '>';
+			echo '<input class="widefat" type="' . esc_attr( $input_type ) . '" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="' . esc_attr( (string) $value ) . '"' . ( 'number' === $input_type ? ' step="any"' : '' ) . ( isset( $f['placeholder'] ) ? ' placeholder="' . esc_attr( $f['placeholder'] ) . '"' : '' ) . '>';
 	}
 
 	if ( $help ) {

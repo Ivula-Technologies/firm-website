@@ -138,6 +138,12 @@ function cwm_menu() {
 			'url'   => cwm_page_url( 'esg-hub' ),
 		);
 	}
+	if ( cwm_tools_on() ) {
+		$insights[] = array(
+			'label' => 'Free tools',
+			'url'   => cwm_page_url( 'tools' ),
+		);
+	}
 	foreach ( array( 'guides', 'news-events' ) as $slug ) {
 		$cat = get_category_by_slug( $slug );
 		if ( $cat ) {
