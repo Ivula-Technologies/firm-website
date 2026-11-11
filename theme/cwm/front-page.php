@@ -59,7 +59,7 @@ if ( count( $ticker ) > 3 ) :
 		$items .= '<li>' . esc_html( $t ) . '</li>';
 	}
 	?>
-	<div class="ticker" aria-label="Services and industries">
+	<div class="ticker">
 		<div class="ticker__track">
 			<ul class="ticker__list"><?php echo $items; // phpcs:ignore ?></ul>
 			<ul class="ticker__list" aria-hidden="true"><?php echo $items; // phpcs:ignore ?></ul>
