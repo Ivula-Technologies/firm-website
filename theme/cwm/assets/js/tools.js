@@ -191,6 +191,59 @@
 		requestAnimationFrame(step);
 	}
 
+	/* ---------- KRA deadlines: recount from today's date in Nairobi ---------- */
+	function nairobiToday() {
+		try {
+			var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Nairobi', year: 'numeric', month: 'numeric', day: 'numeric' }).formatToParts(new Date());
+			var get = function (t) { return parseInt(parts.filter(function (p) { return p.type === t; })[0].value, 10); };
+			return Date.UTC(get('year'), get('month') - 1, get('day'));
+		} catch (e) {
+			var d = new Date(Date.now() + 3 * 3600000);
+			return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+		}
+	}
+	var DAY = 86400000;
+	function fmt(t, opts) { return new Date(t).toLocaleDateString('en-GB', Object.assign({ timeZone: 'UTC' }, opts)).replace(/,/g, ''); }
+	function phrase(n) { return n === 0 ? 'today' : n === 1 ? 'tomorrow' : 'in ' + n + ' days'; }
+
+	function initDeadlines(box) {
+		var today = nairobiToday();
+		var ty = new Date(today).getUTCFullYear(), tm = new Date(today).getUTCMonth() + 1;
+		var list = box.querySelector('.deadlines__list');
+		var items = Array.prototype.map.call(list.querySelectorAll('li[data-day]'), function (li) {
+			var day = parseInt(li.getAttribute('data-day'), 10);
+			var months = li.getAttribute('data-months').split(',').map(Number);
+			var y = ty, m = tm, when = null;
+			for (var i = 0; i < 25 && when === null; i++) {
+				if (months.indexOf(m) > -1) {
+					var t = Date.UTC(y, m - 1, day);
+					if (t >= today) { when = t; }
+				}
+				if (++m > 12) { m = 1; y++; }
+			}
+			return { li: li, when: when, days: Math.round((when - today) / DAY) };
+		}).filter(function (x) { return x.when !== null; });
+		if (!items.length) { return; }
+		items.sort(function (a, b) { return a.days - b.days; });
+		var limit = parseInt(box.getAttribute('data-limit'), 10) || 0;
+		items.forEach(function (it, i) {
+			it.li.hidden = i === 0 || (limit > 0 && i > limit);
+			it.li.querySelector('.deadlines__short').textContent = new Date(it.when).getUTCDate() + ' ' + 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ')[new Date(it.when).getUTCMonth()];
+			it.li.querySelector('.deadlines__when small').textContent = phrase(it.days);
+			list.appendChild(it.li);
+		});
+		var n = items[0], q = function (s) { return box.querySelector(s); };
+		q('.deadlines__num').textContent = n.days;
+		q('.deadlines__num').setAttribute('data-count', n.days);
+		q('.deadlines__unit').textContent = n.days === 1 ? 'day' : 'days';
+		q('.deadlines__name').textContent = n.li.getAttribute('data-name');
+		q('.deadlines__day').textContent = fmt(n.when, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+		var wd = new Date(n.when).getUTCDay(), flag = q('.deadlines__flag');
+		flag.hidden = !(wd === 0 || wd === 6);
+		flag.textContent = flag.hidden ? '' : 'Falls on a ' + (wd === 0 ? 'Sunday' : 'Saturday') + ': file early';
+	}
+	document.querySelectorAll('.deadlines').forEach(initDeadlines);
+
 	document.querySelectorAll('[data-tool="paye"]').forEach(initPaye);
 	document.querySelectorAll('[data-tool="vat"]').forEach(initVat);
 	document.querySelectorAll('[data-tool="esg"]').forEach(initEsg);

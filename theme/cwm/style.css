@@ -4,7 +4,7 @@ Theme URI: https://ivulatechnologies.com
 Author: Ivula Technologies
 Author URI: https://ivulatechnologies.com
 Description: Corporate theme for a Kenyan accounting, tax, advisory and ESG firm. Every block is editable in WordPress, with switches for the audit service and the team section. No plugins required.
-Version: 1.2.0
+Version: 1.2.1
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1062,3 +1062,7 @@ a.pill:hover { background: var(--royal); color: #fff; }
 	.btn--primary:hover { background-color: var(--royal-dark); background-image: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .22) 50%, transparent 70%); background-position: -40% 0; }
 }
 .quiz__cta[hidden] { display: none; }
+.deadlines__list li[hidden], .deadlines__flag[hidden] { display: none; }
+.deadlines__day { margin-right: 8px; }
+/* Printing: show blocks that were waiting to scroll into view. */
+@media print { .reveal { opacity: 1 !important; transform: none !important; } .ticker, .read-progress { display: none; } }

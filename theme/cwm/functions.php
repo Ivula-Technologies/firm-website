@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CWM_VERSION', '1.2.0' );
+define( 'CWM_VERSION', '1.2.1' );
 define( 'CWM_DIR', get_template_directory() );
 define( 'CWM_URI', get_template_directory_uri() );
 

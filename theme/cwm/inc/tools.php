@@ -24,6 +24,16 @@ function cwm_tools_rates() {
 			'rate' => (float) $parts[1],
 		);
 	}
+	if ( ! $bands ) {
+		$d = cwm_setting_defaults();
+		foreach ( preg_split( '/\r\n|\r|\n/', $d['paye_bands'] ) as $line ) {
+			list( $upto, $rate ) = explode( ':', $line );
+			$bands[] = array(
+				'upto' => '*' === $upto ? null : (float) $upto,
+				'rate' => (float) $rate,
+			);
+		}
+	}
 	$num = function ( $key ) {
 		return (float) cwm_opt( $key );
 	};
@@ -149,24 +159,27 @@ function cwm_days_phrase( $days ) {
 	return 1 === $days ? 'tomorrow' : 'in ' . $days . ' days';
 }
 
-/** Deadline countdown. Compact for the homepage, full for the tools page. */
+/** Deadline countdown. Compact for the homepage, full for the tools page.
+ * Every rule is in the list with its day and months, so tools.js can recount from the visitor's
+ * own date: a page served from a cache (LiteSpeed, Cloudflare) never shows a stale countdown. */
 function cwm_tool_deadlines( $compact = false ) {
-	$list = cwm_kra_deadlines();
-	$next = array_shift( $list );
+	$all   = cwm_kra_deadlines();
+	$next  = $all[0];
+	$limit = $compact ? 2 : 0;
 	?>
-	<div class="deadlines<?php echo $compact ? ' deadlines--compact' : ''; ?>">
+	<div class="deadlines<?php echo $compact ? ' deadlines--compact' : ''; ?>" data-limit="<?php echo (int) $limit; ?>">
 		<div class="deadlines__next">
 			<p class="deadlines__kicker"><?php echo cwm_icon( 'calendar' ); // phpcs:ignore ?> Next KRA deadline</p>
 			<p class="deadlines__count"><span class="deadlines__num" data-count="<?php echo (int) $next['days']; ?>"><?php echo (int) $next['days']; ?></span><span class="deadlines__unit"><?php echo 1 === $next['days'] ? 'day' : 'days'; ?></span></p>
 			<p class="deadlines__name"><?php echo esc_html( $next['name'] ); ?></p>
-			<p class="deadlines__date"><?php echo esc_html( wp_date( 'l j F Y', $next['date']->getTimestamp(), $next['date']->getTimezone() ) ); ?><?php echo $next['weekend'] ? ' <span class="deadlines__flag">Falls on a ' . esc_html( $next['weekend'] ) . ': file early</span>' : ''; ?></p>
+			<p class="deadlines__date"><span class="deadlines__day"><?php echo esc_html( wp_date( 'l j F Y', $next['date']->getTimestamp(), $next['date']->getTimezone() ) ); ?></span><span class="deadlines__flag"<?php echo $next['weekend'] ? '' : ' hidden'; ?>><?php echo $next['weekend'] ? 'Falls on a ' . esc_html( $next['weekend'] ) . ': file early' : ''; ?></span></p>
 		</div>
 		<ul class="deadlines__list">
-			<?php foreach ( $compact ? array_slice( $list, 0, 2 ) : $list as $d ) : ?>
-				<li>
+			<?php foreach ( $all as $i => $d ) : ?>
+				<li data-day="<?php echo (int) $d['day']; ?>" data-months="<?php echo esc_attr( implode( ',', $d['months'] ) ); ?>" data-name="<?php echo esc_attr( $d['name'] ); ?>"<?php echo ( 0 === $i || ( $limit && $i > $limit ) ) ? ' hidden' : ''; ?>>
 					<span class="deadlines__icon"><?php echo cwm_icon( $d['icon'] ); // phpcs:ignore ?></span>
 					<span class="deadlines__what"><strong><?php echo esc_html( $d['name'] ); ?></strong><?php echo $compact ? '' : '<small>' . esc_html( $d['note'] ) . '</small>'; ?></span>
-					<span class="deadlines__when"><?php echo esc_html( wp_date( 'j M', $d['date']->getTimestamp(), $d['date']->getTimezone() ) ); ?><small><?php echo esc_html( cwm_days_phrase( $d['days'] ) ); ?></small></span>
+					<span class="deadlines__when"><span class="deadlines__short"><?php echo esc_html( wp_date( 'j M', $d['date']->getTimestamp(), $d['date']->getTimezone() ) ); ?></span><small><?php echo esc_html( cwm_days_phrase( $d['days'] ) ); ?></small></span>
 				</li>
 			<?php endforeach; ?>
 		</ul>
