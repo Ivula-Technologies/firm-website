@@ -1,3 +1,5 @@
+import { Photo } from "@/components/Photo";
+import { servicePhoto } from "@/lib/media";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -27,9 +29,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   };
   return (
     <>
-      <PageHero eyebrow={groups[s.group].label} title={s.title} text={s.promise}>
+      <PageHero photo={servicePhoto[s.slug]} eyebrow={groups[s.group].label} title={s.title} text={s.promise}>
         <div className="who">
-          <Icon name="handshake" size={24} />
           <p><strong>Who it is for:</strong> {s.who}</p>
         </div>
         <div className="hero__actions" style={{ marginTop: 28, marginBottom: 0 }}>
@@ -44,7 +45,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div className="svc-grid">
             {s.subs.map((x, i) => (
               <div key={x.title} className="svc-item reveal" style={{ transitionDelay: `${(i % 3) * 60}ms` }}>
-                <span className="svc-item__icon"><Icon name={x.assurance ? "shield-check" : "check"} size={20} /></span>
                 <h3>{x.title}</h3>
                 <p>{x.text}</p>
               </div>
@@ -93,7 +93,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div className="related">
             {services.filter((x) => x.slug !== s.slug).map((x) => (
               <Link key={x.slug} href={`/services/${x.slug}`} className="scard reveal" style={{ background: "#fff", borderColor: "var(--line)" }}>
-                <span className="scard__icon"><Icon name={x.icon} size={20} /></span>
+                <Photo photo={servicePhoto[x.slug]} className="scard__img" sizes="96px" />
                 <span className="scard__body"><strong>{x.title}</strong><span>{x.promise}</span></span>
                 <Icon name="arrow-up-right" size={18} className="scard__go" />
               </Link>

@@ -1,3 +1,4 @@
+import { photos } from "@/lib/media";
 import type { Metadata } from "next";
 import { ContactSide } from "@/components/ContactSide";
 import { EnquiryForm } from "@/components/Forms";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHero eyebrow="Contact" title="Let's talk" text="Call, email, WhatsApp or send the form. We reply within one working day." />
+      <PageHero photo={photos.handshake} eyebrow="Contact" title="Let's talk" text="Call, email, WhatsApp or send the form. We reply within one working day." />
       <section className="section section--soft">
         <div className="container contact">
           <div className="contact__form reveal">

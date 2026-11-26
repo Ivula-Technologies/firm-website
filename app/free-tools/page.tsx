@@ -16,10 +16,10 @@ export default function ToolsPage() {
     <>
       <PageHero eyebrow="Free tools" title="Work it out in a minute" text="Quick, free calculators and reminders for Kenyan businesses. Nothing to sign up for.">
         <nav className="chipnav" aria-label="Tools on this page">
-          <a href="#paye"><Icon name="calculator" size={16} /> PAYE</a>
-          <a href="#vat"><Icon name="receipt-text" size={16} /> VAT</a>
-          <a href="#deadlines"><Icon name="calendar" size={16} /> KRA deadlines</a>
-          <a href="#esg-check"><Icon name="leaf" size={16} /> ESG check</a>
+          <a href="#paye">PAYE</a>
+          <a href="#vat">VAT</a>
+          <a href="#deadlines">KRA deadlines</a>
+          <a href="#esg-check">ESG check</a>
         </nav>
       </PageHero>
       <section className="section section--soft">

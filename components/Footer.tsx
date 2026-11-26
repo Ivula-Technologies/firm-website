@@ -60,7 +60,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container footer__bottom">
-        <p>&copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} {site.legalName}. All rights reserved. Powered by <a href="https://ivulatechnologies.com" target="_blank" rel="noopener">Ivula Technologies</a>.</p>
         <ul>
           <li><Link href="/privacy-policy">Privacy policy</Link></li>
           <li><Link href="/cookie-policy">Cookie policy</Link></li>

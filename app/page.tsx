@@ -7,6 +7,8 @@ import { HeroVideo } from "@/components/HeroVideo";
 import { groups, industries, posts, promises, services, type Group } from "@/lib/content";
 import { upcomingDeadlines } from "@/lib/deadlines";
 import { site } from "@/lib/site";
+import { Photo } from "@/components/Photo";
+import { industryPhoto, photos } from "@/lib/media";
 
 const STEPS = [
   { title: "Listen", text: "We start with your business, not our checklist." },
@@ -52,6 +54,7 @@ export default function Home() {
             <h2 className="h-section">Three things every business must account for</h2>
             <p className="lede">Your money, your obligations and your impact. We help with all three, so you can get on with running the business.</p>
             <Link href="/services" className="link-arrow">All services <Icon name="arrow-right" size={16} /></Link>
+            <Photo photo={photos.laptopBraids} className="side-photo" sizes="(max-width: 900px) 100vw, 40vw" />
           </div>
           <div className="groups">
             {(Object.keys(groups) as Group[]).map((g) => (
@@ -105,15 +108,16 @@ export default function Home() {
       </section>
 
       <section className="section section--soft">
-        <div className="container split-head">
-          <div>
-            <h2 className="h-section">Who we work with</h2>
-            <p className="lede">Kenyan organisations of every size, each with its own rules and reporting.</p>
-            <Link href="/industries" className="link-arrow">All industries <Icon name="arrow-right" size={16} /></Link>
-          </div>
-          <ul className="plainlist">
+        <div className="container">
+          <SectionHead title="Who we work with" text="Kenyan organisations of every size, each with its own rules and reporting." link={{ href: "/industries", label: "All industries" }} />
+          <ul className="itiles">
             {industries.map((ind) => (
-              <li key={ind.title}><Link href={`/industries#${slug(ind.title)}`}>{ind.title}</Link></li>
+              <li key={ind.title}>
+                <Link href={`/industries#${slug(ind.title)}`}>
+                  <Photo photo={industryPhoto[ind.title]} className="itiles__img" sizes="(max-width: 560px) 50vw, 25vw" />
+                  <span>{ind.title}</span>
+                </Link>
+              </li>
             ))}
           </ul>
         </div>

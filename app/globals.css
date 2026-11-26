@@ -627,3 +627,28 @@ input[type="range"] { border-radius: 2px; }
   .group ul { grid-column: 1; grid-row: auto; margin-top: 8px; }
   .plainlist { columns: 1; }
 }
+
+/* ---------- Photos ---------- */
+.phero--photo { min-height: 380px; display: flex; align-items: flex-end; }
+.phero--photo .phero__inner { width: 100%; }
+.phero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.phero--photo .phero__bg { display: block; z-index: -1; background: linear-gradient(90deg, rgba(8, 24, 48, .9) 0%, rgba(8, 24, 48, .72) 55%, rgba(8, 24, 48, .45) 100%); }
+.phero--photo .phero__bg::after { display: none; }
+.svc-item--photo { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.svc-item--photo > :not(.svc-item__img) { margin-left: 24px; margin-right: 24px; }
+.svc-item--photo h3 { margin-top: 20px; }
+.svc-item--photo .link-arrow { margin-bottom: 24px; }
+.svc-item__img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: var(--soft); }
+.scard__img { width: 72px; height: 72px; flex: none; object-fit: cover; border-radius: 4px; background: var(--soft); }
+.ind { grid-template-columns: 220px 1fr auto; }
+.ind__img { width: 220px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; display: block; background: var(--line); }
+@media (max-width: 720px) { .ind { grid-template-columns: 1fr; } .ind__img { width: 100%; aspect-ratio: 16 / 9; } }
+.side-photo { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; margin-top: 32px; background: var(--line); }
+.itiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.itiles a { display: block; color: var(--navy); text-decoration: none; }
+.itiles__img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; background: var(--line); transition: opacity .2s; }
+.itiles span { display: block; padding-top: 10px; font: 600 1.08rem/1.3 var(--font-serif), serif; }
+.itiles a:hover .itiles__img { opacity: .88; }
+.itiles a:hover span { color: var(--royal); }
+@media (max-width: 900px) { .itiles { grid-template-columns: repeat(2, 1fr); } }
+.footer__bottom a { color: inherit; }

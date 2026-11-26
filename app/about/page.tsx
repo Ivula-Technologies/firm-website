@@ -1,3 +1,4 @@
+import { photos } from "@/lib/media";
 import type { Metadata } from "next";
 import { Icon } from "@/components/Icon";
 import { Cta, PageHero, SectionHead } from "@/components/ui";
@@ -25,7 +26,7 @@ const STEPS = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="About us" title="A Kenyan firm that counts what matters" text="We keep the books, handle the tax, advise on the next move, and help our clients measure and report their impact." />
+      <PageHero photo={photos.nairobi} eyebrow="About us" title="A Kenyan firm that counts what matters" text="We keep the books, handle the tax, advise on the next move, and help our clients measure and report their impact." />
       <section className="section">
         <div className="container split">
           <div className="prose reveal">
@@ -44,7 +45,6 @@ export default function AboutPage() {
           <div className="three">
             {THREE.map((t) => (
               <div key={t.title} className="svc-item reveal">
-                <span className="svc-item__icon"><Icon name={t.icon} size={20} /></span>
                 <h3>{t.title}</h3>
                 <p>{t.text}</p>
               </div>
@@ -59,7 +59,6 @@ export default function AboutPage() {
             {promises.map((p, i) => (
               <div key={p.title} className="promise reveal">
                 <span className="promise__n">0{i + 1}</span>
-                <span className="promise__icon"><Icon name={p.icon} size={22} /></span>
                 <h3>{p.title}</h3>
                 <p>{p.text}</p>
               </div>
