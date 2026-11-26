@@ -16,6 +16,12 @@ export const site = {
   address: ["Upper Hill, Nairobi", "P.O. Box 00000-00100, Nairobi, Kenya"],
   mapQuery: "Upper Hill, Nairobi, Kenya",
   hours: ["Monday to Friday, 8:00am to 5:00pm", "Saturday by appointment"],
+  /**
+   * Hero background video. Mixkit clip 100323 ("Woman working at laptop in office
+   * setting"), Mixkit Stock Video Free License: commercial use, no credit needed.
+   * To use the client's own footage, put an .mp4 in public/media/ and point this at it.
+   */
+  heroVideo: "https://assets.mixkit.co/active_storage/video_items/100323/1722991118/100323-video-720.mp4",
   social: {
     linkedin: "",
     x: "",

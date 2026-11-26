@@ -24,3 +24,7 @@ In Vercel, **Project > Settings > Domains**, add `jeniqa.com` and `www.jeniqa.co
 ## Before launch
 
 Fill in the placeholders in `lib/site.ts`: phone, WhatsApp number, street address, map search text, office hours and social links. Confirm the tax rates in the same file (preset to February 2025).
+
+## Home page video
+
+The home page background is a free Mixkit clip (commercial use allowed, no credit needed), set in `lib/site.ts` as `heroVideo`. To use the client's own footage, add an .mp4 (720p, under about 10 MB, no sound) to `public/media/` and set `heroVideo: "/media/your-file.mp4"`. People who ask for reduced motion or data saving see the plain navy background instead.
