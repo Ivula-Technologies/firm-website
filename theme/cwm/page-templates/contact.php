@@ -30,7 +30,7 @@ cwm_banner( get_the_title(), cwm_field( 'intro', 'Call, email, WhatsApp or send 
 				<?php endif; ?>
 			</ul>
 			<?php if ( cwm_whatsapp_url() ) : ?>
-				<a class="btn btn--whatsapp btn--block" href="<?php echo esc_url( cwm_whatsapp_url( 'Hello ' . cwm_firm() . ', I would like to ask about your services.' ) ); ?>" target="_blank" rel="noopener"><?php echo cwm_icon( 'whatsapp' ); // phpcs:ignore ?> Chat on WhatsApp</a>
+				<a class="btn btn--whatsapp btn--block" href="<?php echo esc_url( cwm_whatsapp_url( 'Hello ' . cwm_brand() . ', I would like to ask about your services.' ) ); ?>" target="_blank" rel="noopener"><?php echo cwm_icon( 'whatsapp' ); // phpcs:ignore ?> Chat on WhatsApp</a>
 			<?php endif; ?>
 			<a class="btn btn--ghost btn--block" href="<?php echo esc_url( cwm_page_url( 'proposal' ) ); ?>">Need a quote? Request a proposal</a>
 			<?php cwm_map(); ?>

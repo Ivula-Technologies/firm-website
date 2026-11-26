@@ -12,7 +12,7 @@ $is_case   = $current && 'case-analysis' === $current->slug;
 $is_tax    = $current && ( 'tax-alerts' === $current->slug || $is_case );
 $is_esg    = $current && 'esg-reporting' === $current->slug;
 $title     = $current ? ( $is_case ? 'Tax case analysis' : $current->name ) : 'Insights';
-$line      = $current && $current->description ? wp_strip_all_tags( $current->description ) : 'Tax alerts, case analyses, ESG reporting updates, practical guides and news from ' . cwm_firm() . '.';
+$line      = $current && $current->description ? wp_strip_all_tags( $current->description ) : 'Tax alerts, case analyses, ESG reporting updates, practical guides and news from ' . cwm_brand() . '.';
 $base_url  = $current ? get_category_link( $current ) : cwm_insights_url();
 
 cwm_banner( $title, $line, array( 'eyebrow' => $current ? 'Insights' : '' ) );

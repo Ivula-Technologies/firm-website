@@ -26,7 +26,7 @@ $form    = $service ? ( (int) get_queried_object_id() === $service ? '#enquire' 
 				<li<?php echo cwm_whatsapp_url() ? '' : ' class="is-wide"'; ?>><a href="<?php echo esc_url( cwm_tel_url() ); ?>"><span class="cta__icon"><?php echo cwm_icon( 'phone' ); // phpcs:ignore ?></span><span><small>Call</small><?php echo esc_html( cwm_opt( 'phone' ) ); ?></span></a></li>
 			<?php endif; ?>
 			<?php if ( cwm_whatsapp_url() ) : ?>
-				<li><a href="<?php echo esc_url( cwm_whatsapp_url( 'Hello ' . cwm_firm() . ', I would like to talk about my business.' ) ); ?>" target="_blank" rel="noopener"><span class="cta__icon"><?php echo cwm_icon( 'whatsapp' ); // phpcs:ignore ?></span><span><small>WhatsApp</small>Chat with us</span></a></li>
+				<li><a href="<?php echo esc_url( cwm_whatsapp_url( 'Hello ' . cwm_brand() . ', I would like to talk about my business.' ) ); ?>" target="_blank" rel="noopener"><span class="cta__icon"><?php echo cwm_icon( 'whatsapp' ); // phpcs:ignore ?></span><span><small>WhatsApp</small>Chat with us</span></a></li>
 			<?php endif; ?>
 			<?php if ( cwm_opt( 'email' ) ) : ?>
 				<li class="is-wide"><a href="mailto:<?php echo esc_attr( cwm_opt( 'email' ) ); ?>"><span class="cta__icon"><?php echo cwm_icon( 'mail' ); // phpcs:ignore ?></span><span><small>Email</small><?php echo esc_html( cwm_opt( 'email' ) ); ?></span></a></li>

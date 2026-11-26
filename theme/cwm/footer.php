@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="footer-top">
 			<div class="footer-brand">
-				<a class="brand brand--light" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( cwm_firm() ); ?>, home"><?php cwm_logo( 'light' ); ?></a>
+				<a class="brand brand--light" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( cwm_brand() ); ?>, home"><?php cwm_logo( 'light' ); ?></a>
 				<p><?php echo esc_html( cwm_opt( 'description' ) ); ?></p>
 				<?php cwm_profile_button( 'btn btn--outline-light btn--sm' ); ?>
 				<ul class="social">
@@ -20,7 +20,7 @@
 							continue;
 						}
 						?>
-						<li><a href="<?php echo esc_url( $s[0] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( cwm_firm() . ' on ' . $s[1] ); ?>"><?php echo cwm_icon( $icon ); // phpcs:ignore ?></a></li>
+						<li><a href="<?php echo esc_url( $s[0] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( cwm_brand() . ' on ' . $s[1] ); ?>"><?php echo cwm_icon( $icon ); // phpcs:ignore ?></a></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
@@ -92,7 +92,7 @@
 </footer>
 
 <?php if ( cwm_whatsapp_url() ) : ?>
-	<a class="wa-float" href="<?php echo esc_url( cwm_whatsapp_url( 'Hello ' . cwm_firm() . ', I would like to ask about your services.' ) ); ?>" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><?php echo cwm_icon( 'whatsapp' ); // phpcs:ignore ?></a>
+	<a class="wa-float" href="<?php echo esc_url( cwm_whatsapp_url( 'Hello ' . cwm_brand() . ', I would like to ask about your services.' ) ); ?>" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><?php echo cwm_icon( 'whatsapp' ); // phpcs:ignore ?></a>
 <?php endif; ?>
 
 <?php wp_footer(); ?>

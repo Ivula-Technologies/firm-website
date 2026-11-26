@@ -5,27 +5,35 @@
 
 defined( 'ABSPATH' ) || exit;
 
-/** The built-in mark: three ascending bars for money, obligations and impact. */
+/** The built-in JENIQA mark: a ring with a rising arrow breaking out of it. */
 function cwm_mark_svg( $variant = 'dark' ) {
-	$uid = 'g' . wp_rand( 1000, 9999 );
-	return '<svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">'
-		. '<defs><linearGradient id="' . $uid . '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' . ( 'light' === $variant ? '#2A6FD6' : '#0B2545' ) . '"/><stop offset="1" stop-color="#1F5FBF"/></linearGradient></defs>'
-		. '<rect width="48" height="48" rx="12" fill="url(#' . $uid . ')"/>'
-		. '<rect x="11" y="25" width="7" height="13" rx="2" fill="#fff" fill-opacity=".55"/>'
-		. '<rect x="20.5" y="18" width="7" height="20" rx="2" fill="#fff" fill-opacity=".8"/>'
-		. '<rect x="30" y="10" width="7" height="28" rx="2" fill="#fff"/>'
+	$light = 'light' === $variant;
+	return '<svg class="brand__mark" viewBox="28 28 416 416" aria-hidden="true" focusable="false">'
+		. '<circle cx="222" cy="222" r="170" fill="none" stroke="' . ( $light ? '#fff' : '#0E2747' ) . '" stroke-width="38"/>'
+		. '<path d="M120 290 188 232 238 264 408 95M330 86h88v86" fill="none" stroke="' . ( $light ? '#6FA0EA' : '#2160C4' ) . '" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>'
 		. '</svg>';
 }
 
-/** Logo: uploaded image if set, otherwise the mark plus the firm name from settings. */
+/** The short brand name for the logo, with the accent letters (e.g. "IQ") in gold. */
+function cwm_wordmark() {
+	$name   = cwm_brand();
+	$accent = (string) cwm_opt( 'brand_accent' );
+	$pos    = '' !== $accent ? strpos( $name, $accent ) : false;
+	if ( false === $pos ) {
+		return '<span class="brand__word">' . esc_html( $name ) . '</span>';
+	}
+	return '<span class="brand__word">' . esc_html( substr( $name, 0, $pos ) ) . '<span class="brand__accent">' . esc_html( $accent ) . '</span>' . esc_html( substr( $name, $pos + strlen( $accent ) ) ) . '</span>';
+}
+
+/** Logo: uploaded image if set, otherwise the built-in mark plus the brand name. */
 function cwm_logo( $variant = 'dark' ) {
 	$id = (int) ( 'light' === $variant && cwm_opt( 'logo_footer' ) ? cwm_opt( 'logo_footer' ) : cwm_opt( 'logo' ) );
 	if ( $id && wp_get_attachment_url( $id ) ) {
-		echo '<img class="brand__img" src="' . esc_url( wp_get_attachment_url( $id ) ) . '" alt="' . esc_attr( cwm_firm() ) . '" height="48">';
+		echo '<img class="brand__img" src="' . esc_url( wp_get_attachment_url( $id ) ) . '" alt="' . esc_attr( cwm_brand() ) . '" height="48">';
 		return;
 	}
 	echo cwm_mark_svg( $variant ); // phpcs:ignore WordPress.Security.EscapeOutput
-	echo '<span class="brand__text"><span class="brand__name">' . esc_html( cwm_firm() ) . '</span><span class="brand__tag">' . esc_html( cwm_opt( 'tagline' ) ) . '</span></span>';
+	echo cwm_wordmark(); // phpcs:ignore WordPress.Security.EscapeOutput
 }
 
 /** "Download firm profile" button, hidden without a file. */

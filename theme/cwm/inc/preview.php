@@ -112,7 +112,7 @@ function cwm_preview_gate( $error ) {
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title><?php echo esc_html( cwm_firm() ); ?>: preview</title>
+<title><?php echo esc_html( cwm_brand() ); ?>: preview</title>
 <link rel="stylesheet" href="<?php echo esc_url( $css ); ?>">
 <link rel="icon" href="<?php echo esc_url( CWM_URI . '/assets/img/favicon.svg' ); ?>">
 </head>
@@ -120,7 +120,7 @@ function cwm_preview_gate( $error ) {
 	<main class="preview-gate__card">
 		<div class="preview-gate__brand brand"><?php cwm_logo(); ?></div>
 		<h1>Website preview</h1>
-		<p>This is the new <?php echo esc_html( cwm_firm() ); ?> website before it goes live. Enter the preview password you were given to look around.</p>
+		<p>This is the new <?php echo esc_html( cwm_brand() ); ?> website before it goes live. Enter the preview password you were given to look around.</p>
 		<form method="post">
 			<label for="cwm-pv">Preview password</label>
 			<input id="cwm-pv" type="password" name="cwm_preview_password" autocomplete="current-password" required autofocus>
@@ -146,7 +146,7 @@ function cwm_preview_banner() {
 	$page = isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ? set_url_scheme( 'http://' . sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) . esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) : home_url( '/' );
 	if ( $fb ) {
 		if ( is_email( $fb ) ) {
-			$href = 'mailto:' . $fb . '?subject=' . rawurlencode( 'Website feedback: ' . cwm_firm() ) . '&body=' . rawurlencode( "Page: " . $page . "\n\n" );
+			$href = 'mailto:' . $fb . '?subject=' . rawurlencode( 'Website feedback: ' . cwm_brand() ) . '&body=' . rawurlencode( "Page: " . $page . "\n\n" );
 		} elseif ( preg_match( '/^\+?[0-9 ]{9,16}$/', $fb ) ) {
 			$href = 'https://wa.me/' . preg_replace( '/\D/', '', $fb ) . '?text=' . rawurlencode( 'Website feedback on ' . $page . ': ' );
 		} else {
