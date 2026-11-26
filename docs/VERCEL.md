@@ -28,3 +28,7 @@ Fill in the placeholders in `lib/site.ts`: phone, WhatsApp number, street addres
 ## Home page video
 
 The home page background is a free Mixkit clip (commercial use allowed, no credit needed), set in `lib/site.ts` as `heroVideo`. To use the client's own footage, add an .mp4 (720p, under about 10 MB, no sound) to `public/media/` and set `heroVideo: "/media/your-file.mp4"`. People who ask for reduced motion or data saving see the plain navy background instead.
+
+## Photos
+
+Photos are free Unsplash photos (free for commercial use, no credit required), listed with their photographers in `lib/media.ts`. `servicePhoto` and `industryPhoto` there decide which photo goes with each service and industry. To use the client's own photos, add them to `public/media/` and change the `src` of the matching entry to `/media/<file>.jpg`.

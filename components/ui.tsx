@@ -1,3 +1,5 @@
+import { Photo } from "@/components/Photo";
+import type { Photo as PhotoT } from "@/lib/media";
 import Link from "next/link";
 import { Icon } from "./Icon";
 import { categories, formatDate, primaryCategory, readingTime, type Post } from "@/lib/content";
@@ -21,9 +23,10 @@ export function SectionHead({ eyebrow, title, text, link, center = false, light 
   );
 }
 
-export function PageHero({ eyebrow, title, text, children }: { eyebrow?: string; title: string; text?: string; children?: React.ReactNode }) {
+export function PageHero({ eyebrow, title, text, children, photo }: { eyebrow?: string; title: string; text?: string; children?: React.ReactNode; photo?: PhotoT }) {
   return (
-    <section className="phero">
+    <section className={`phero${photo ? " phero--photo" : ""}`}>
+      {photo && <Photo photo={photo} className="phero__img" sizes="100vw" eager />}
       <div className="phero__bg" aria-hidden="true" />
       <div className="container phero__inner">
         {eyebrow && <p className="eyebrow eyebrow--light">{eyebrow}</p>}

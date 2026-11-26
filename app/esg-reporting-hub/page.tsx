@@ -1,3 +1,4 @@
+import { photos } from "@/lib/media";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
@@ -15,12 +16,12 @@ export default function HubPage() {
   const esg = posts.filter((p) => p.cats.includes("esg-reporting") && !p.meta.series_part);
   return (
     <>
-      <PageHero eyebrow="ESG reporting hub" title="Sustainability reporting, made practical" text="ICPAK has adopted the IFRS sustainability standards, the NSE has ESG disclosure guidance, and lenders, investors and export buyers now ask for ESG information as a matter of course. Start here.">
+      <PageHero photo={photos.farmer} eyebrow="ESG reporting hub" title="Sustainability reporting, made practical" text="ICPAK has adopted the IFRS sustainability standards, the NSE has ESG disclosure guidance, and lenders, investors and export buyers now ask for ESG information as a matter of course. Start here.">
         <nav className="chipnav" aria-label="On this page">
-          <a href="#series"><Icon name="book-open" size={16} /> Start here</a>
-          <a href="#downloads"><Icon name="download" size={16} /> Free downloads</a>
-          <a href="#glossary"><Icon name="info" size={16} /> Glossary</a>
-          <Link href="/free-tools#esg-check"><Icon name="leaf" size={16} /> ESG readiness check</Link>
+          <a href="#series">Start here</a>
+          <a href="#downloads">Free downloads</a>
+          <a href="#glossary">Glossary</a>
+          <Link href="/free-tools#esg-check">ESG readiness check</Link>
         </nav>
       </PageHero>
 

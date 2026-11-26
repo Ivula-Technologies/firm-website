@@ -1,3 +1,5 @@
+import { Photo } from "@/components/Photo";
+import { industryPhoto, photos } from "@/lib/media";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
@@ -15,16 +17,16 @@ const id = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 export default function IndustriesPage() {
   return (
     <>
-      <PageHero eyebrow="Industries" title="We work across the Kenyan economy" text="Every sector has its own rules, risks and reporting. Here is how we help in each.">
+      <PageHero photo={photos.nairobiTowers} eyebrow="Industries" title="We work across the Kenyan economy" text="Every sector has its own rules, risks and reporting. Here is how we help in each.">
         <nav className="chipnav" aria-label="Industries on this page">
-          {industries.map((i) => <a key={i.title} href={`#${id(i.title)}`}><Icon name={i.icon} size={16} /> {i.title}</a>)}
+          {industries.map((i) => <a key={i.title} href={`#${id(i.title)}`}>{i.title}</a>)}
         </nav>
       </PageHero>
       <section className="section section--soft">
         <div className="container ind-list">
           {industries.map((ind) => (
             <article key={ind.title} id={id(ind.title)} className="ind reveal">
-              <span className="ind__icon"><Icon name={ind.icon} size={26} /></span>
+              <Photo photo={industryPhoto[ind.title]} className="ind__img" sizes="(max-width: 720px) 100vw, 240px" />
               <div>
                 <h2>{ind.title}</h2>
                 <p>{ind.summary}</p>
