@@ -1,6 +1,21 @@
-# Firm website
+# JENIQA website
 
-The website for a Kenyan accounting, tax, advisory and ESG firm, built by Ivula Technologies. It is a self-contained WordPress theme ("Count What Matters") that sets the whole site up on activation: every page, the 7 services, 8 industries, insights with tax case analyses, the ESG reporting hub, forms, SEO and the legal pages. No plugins are needed apart from one for SMTP email.
+The website for JENIQA Advisory Limited, a Kenyan accounting, tax, advisory and ESG firm, built by Ivula Technologies.
+
+The repository holds two versions of the same site:
+
+- **Next.js site (repo root), hosted on Vercel.** This is the main, modern site. See [docs/VERCEL.md](docs/VERCEL.md).
+- **WordPress theme (`theme/cwm`), for cPanel hosting.** Kept for clients who want to edit pages in WordPress. Documented below.
+
+## Next.js site on Vercel
+
+- Vercel builds the repo root on every push; `main` is production. No settings are needed beyond the env vars for the forms.
+- Content: firm details, phone, WhatsApp, address and tax rates in `lib/site.ts`; services, industries, insights, glossary and legal text in `data/content.json`.
+- Local: `npm install`, `npm run dev`, then `npm run build` before pushing.
+
+# WordPress theme
+
+The theme is for a Kenyan accounting, tax, advisory and ESG firm, built by Ivula Technologies. It is a self-contained WordPress theme ("Count What Matters") that sets the whole site up on activation: every page, the 7 services, 8 industries, insights with tax case analyses, the ESG reporting hub, forms, SEO and the legal pages. No plugins are needed apart from one for SMTP email.
 
 ![Home page](docs/screenshots/01-home.jpg)
 
