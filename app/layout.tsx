@@ -8,6 +8,7 @@ import { services } from "@/lib/content";
 import { site } from "@/lib/site";
 
 const display = localFont({ src: "./fonts/manrope-latin-wght-normal.woff2", variable: "--font-display", weight: "200 800", display: "swap" });
+const serif = localFont({ src: "./fonts/source-serif-4-latin-wght-normal.woff2", variable: "--font-serif", weight: "200 900", display: "swap" });
 const body = localFont({ src: "./fonts/inter-latin-wght-normal.woff2", variable: "--font-body", weight: "100 900", display: "swap" });
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ const org = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-KE" className={`${display.variable} ${body.variable}`}>
+    <html lang="en-KE" className={`${display.variable} ${serif.variable} ${body.variable}`}>
       <body>
         <a className="skip" href="#main">Skip to content</a>
         <Header />

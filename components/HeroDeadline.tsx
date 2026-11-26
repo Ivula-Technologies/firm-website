@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { upcomingDeadlines, type Deadline } from "@/lib/deadlines";
 
-/** The hero's countdown card, recounted in the browser so a cached page stays right. */
+/** The hero's next-deadline line, recounted in the browser so a cached page stays right. */
 export function HeroDeadline({ initial }: { initial: Deadline }) {
   const [next, setNext] = useState(initial);
   useEffect(() => {
@@ -11,10 +11,11 @@ export function HeroDeadline({ initial }: { initial: Deadline }) {
     if (d) setNext(d);
   }, []);
   return (
-    <div className="gcard gcard--deadline">
-      <p className="gcard__k">Next KRA deadline</p>
-      <p className="gcard__big">{next.days}<span>{next.days === 1 ? " day" : " days"}</span></p>
-      <p className="gcard__s">{next.name}</p>
-    </div>
+    <>
+      <span className="vhero__k">Next KRA deadline</span>
+      <span className="vhero__v">
+        {next.name}, in {next.days} {next.days === 1 ? "day" : "days"}
+      </span>
+    </>
   );
 }
