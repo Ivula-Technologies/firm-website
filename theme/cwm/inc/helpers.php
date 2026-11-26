@@ -16,7 +16,7 @@ function cwm_setting_defaults() {
 		'logo'               => 0,
 		'logo_footer'        => 0,
 		'phone'              => '+254 700 000 000',
-		'email'              => 'info@jeniqa.co.ke',
+		'email'              => 'info@jeniqa.com',
 		'whatsapp'           => '254700000000',
 		'address'            => "Upper Hill, Nairobi\nP.O. Box 00000-00100, Nairobi, Kenya",
 		'hours'              => "Monday to Friday, 8:00am to 5:00pm\nSaturday by appointment",

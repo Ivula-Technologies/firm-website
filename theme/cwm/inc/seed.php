@@ -997,7 +997,15 @@ TXT;
 add_action(
 	'init',
 	function () {
-		if ( get_option( 'cwm_brand_130' ) || ! get_option( 'cwm_seeded' ) ) {
+		if ( ! get_option( 'cwm_seeded' ) ) {
+			return;
+		}
+		$set0 = (array) get_option( 'cwm_settings', array() );
+		if ( isset( $set0['email'] ) && 'info@jeniqa.co.ke' === $set0['email'] ) {
+			$set0['email'] = 'info@jeniqa.com';
+			update_option( 'cwm_settings', $set0 );
+		}
+		if ( get_option( 'cwm_brand_130' ) ) {
 			return;
 		}
 		update_option( 'cwm_brand_130', 1 );
@@ -1010,7 +1018,7 @@ add_action(
 		$set['firm_name']     = $d['firm_name'];
 		$set['brand_name']    = $d['brand_name'];
 		$set['brand_accent']  = $d['brand_accent'];
-		if ( ! isset( $set['email'] ) || 'info@example.co.ke' === $set['email'] ) {
+		if ( ! isset( $set['email'] ) || in_array( $set['email'], array( 'info@example.co.ke', 'info@jeniqa.co.ke' ), true ) ) {
 			$set['email'] = $d['email'];
 		}
 		update_option( 'cwm_settings', $set );
