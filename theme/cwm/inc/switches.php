@@ -198,7 +198,7 @@ add_filter(
 add_filter(
 	'oembed_response_data',
 	function ( $data ) {
-		$data['author_name'] = cwm_firm();
+		$data['author_name'] = cwm_brand();
 		$data['author_url']  = home_url( '/' );
 		return $data;
 	}

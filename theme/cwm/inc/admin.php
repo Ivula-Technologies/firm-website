@@ -55,11 +55,11 @@ function cwm_launch_checks() {
 	$s        = admin_url( 'admin.php?page=cwm-settings' );
 
 	return array(
-		array( cwm_firm() !== $d['firm_name'], 'Firm name set', 'Currently "' . cwm_firm() . '".', $s ),
+		array( '' !== trim( cwm_firm() ) && 'Firm Name' !== cwm_firm(), 'Firm name set', 'Registered name "' . cwm_firm() . '", logo name "' . cwm_brand() . '".', $s ),
 		array( cwm_opt( 'phone' ) !== $d['phone'] && cwm_opt( 'email' ) !== $d['email'], 'Real phone and email', 'Shown in the top bar, footer and contact page.', $s ),
 		array( (bool) cwm_opt( 'email_contact' ), 'Shared address for form emails', 'Forms go to a shared inbox only, never to individuals.', $s . '&tab=forms' ),
 		array( $smtp, 'Email sending plugin (SMTP)', 'Install "WP Mail SMTP" or "FluentSMTP" and connect it to the firm\'s mailbox so form emails are not marked as spam. Every enquiry is also saved under Enquiries.', admin_url( 'plugin-install.php?s=smtp&tab=search' ) ),
-		array( (bool) cwm_opt( 'logo' ), 'Logo uploaded (optional)', 'Without one, the built-in mark and the firm name are used.', $s ),
+		array( (bool) cwm_opt( 'logo' ), 'Logo uploaded (optional)', 'Without one, the built-in logo (mark plus brand name) is used.', $s ),
 		array( (bool) cwm_file_url( cwm_opt( 'firm_profile' ) ), 'Firm profile PDF (optional)', 'The download buttons stay hidden until it is uploaded.', $s ),
 		array( 0 === $sample, 'Sample insights removed', $sample ? $sample . ' sample item(s) are still published. Use the button below once your own articles are in.' : 'None left.', '' ),
 		array( 'hidden' === cwm_audit_state(), 'Audit switch set to Hidden for launch', 'Current state: ' . cwm_audit_state() . '.', $s . '&tab=switches' ),

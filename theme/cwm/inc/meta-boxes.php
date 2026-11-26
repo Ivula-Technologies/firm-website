@@ -14,7 +14,7 @@ function cwm_team_options() {
 	foreach ( preg_split( '/\r?\n/', (string) cwm_opt( 'author_teams' ) ) as $t ) {
 		$t = trim( $t );
 		if ( $t ) {
-			$out[ $t ] = cwm_firm() . ' ' . $t;
+			$out[ $t ] = cwm_brand() . ' ' . $t;
 		}
 	}
 	return $out;

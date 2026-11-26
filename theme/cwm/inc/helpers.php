@@ -8,13 +8,15 @@ defined( 'ABSPATH' ) || exit;
 /** Default values for every firm setting. */
 function cwm_setting_defaults() {
 	return array(
-		'firm_name'          => 'Firm Name',
+		'firm_name'          => 'JENIQA Advisory Limited',
+		'brand_name'         => 'JENIQA',
+		'brand_accent'       => 'IQ',
 		'tagline'            => 'Count what matters.',
 		'description'        => 'Accounting, tax, advisory and ESG support for Kenyan businesses that want to grow, and to do it right.',
 		'logo'               => 0,
 		'logo_footer'        => 0,
 		'phone'              => '+254 700 000 000',
-		'email'              => 'info@example.co.ke',
+		'email'              => 'info@jeniqa.co.ke',
 		'whatsapp'           => '254700000000',
 		'address'            => "Upper Hill, Nairobi\nP.O. Box 00000-00100, Nairobi, Kenya",
 		'hours'              => "Monday to Friday, 8:00am to 5:00pm\nSaturday by appointment",
@@ -71,8 +73,15 @@ add_action(
 	}
 );
 
+/** The registered (legal) name, e.g. "JENIQA Advisory Limited": copyright, consent, structured data. */
 function cwm_firm() {
 	return cwm_opt( 'firm_name' );
+}
+
+/** The short brand name, e.g. "JENIQA": logo, page titles, bylines, greetings. */
+function cwm_brand() {
+	$b = trim( (string) cwm_opt( 'brand_name' ) );
+	return '' !== $b ? $b : cwm_firm();
 }
 
 /** Switch A: hidden, partner or live. */
@@ -302,7 +311,7 @@ function cwm_byline( $post_id = null ) {
 		$team = cwm_is_case( $post_id ) || has_category( 'tax-alerts', $post_id ) ? 'Tax Team' : ( has_category( 'esg-reporting', $post_id ) ? 'ESG Team' : 'Advisory Team' );
 	}
 	return array(
-		'name' => trim( cwm_firm() . ' ' . $team ),
+		'name' => trim( cwm_brand() . ' ' . $team ),
 		'url'  => '',
 	);
 }

@@ -14,7 +14,7 @@ $hero_image = (int) $f( 'hero_image' );
 <section class="hero">
 	<div class="container hero__inner">
 		<div class="hero__copy">
-			<p class="eyebrow eyebrow--light"><?php echo esc_html( cwm_firm() ); ?></p>
+			<p class="eyebrow eyebrow--light">Nairobi, Kenya</p>
 			<?php
 			$headline = $f( 'hero_title', 'Count what matters.' );
 			// Underline the last word in gold.

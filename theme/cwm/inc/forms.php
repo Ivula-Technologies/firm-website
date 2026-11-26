@@ -427,16 +427,16 @@ function cwm_save_enquiry( $type, $values, $file, $page ) {
 	}
 	if ( $to ) {
 		$headers = array( 'Reply-To: ' . ( $who ? $who : 'Sender' ) . ' <' . $values['email'] . '>' );
-		wp_mail( array_map( 'trim', explode( ',', $to ) ), '[' . cwm_firm() . '] ' . $title, implode( "\n", $lines ), $headers, $file ? array( $file['path'] ) : array() );
+		wp_mail( array_map( 'trim', explode( ',', $to ) ), '[' . cwm_brand() . '] ' . $title, implode( "\n", $lines ), $headers, $file ? array( $file['path'] ) : array() );
 	}
 
 	if ( cwm_opt( 'autoreply' ) && 'newsletter' !== $type && ! empty( $values['email'] ) ) {
 		$first = isset( $values['name'] ) ? strtok( $values['name'], ' ' ) : '';
 		$body  = ( $first ? 'Dear ' . $first . ",\n\n" : "Hello,\n\n" )
-			. 'Thank you for contacting ' . cwm_firm() . ". We have received your message and will reply within one working day.\n\n"
+			. 'Thank you for contacting ' . cwm_brand() . ". We have received your message and will reply within one working day.\n\n"
 			. 'If it is urgent, call us on ' . cwm_opt( 'phone' ) . ".\n\n"
 			. cwm_firm() . "\n" . cwm_opt( 'tagline' ) . "\n" . home_url( '/' );
-		wp_mail( $values['email'], 'We have your message: ' . cwm_firm(), $body );
+		wp_mail( $values['email'], 'We have your message: ' . cwm_brand(), $body );
 	}
 }
 

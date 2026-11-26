@@ -26,8 +26,8 @@ Put the site on a staging address on Ivula Hosting before it goes anywhere near 
 3. Go to **Firm settings > Launch checklist**. It lists everything still open.
 
 ## 3. Fill in Firm settings (Firm settings > Firm details)
-- Firm name (it starts as "Firm Name" on purpose), tagline, phone, email, WhatsApp, address and map location.
-- Logo (optional; until one is uploaded, a built-in mark and the firm name are used).
+- Registered company name ("JENIQA Advisory Limited", used in the copyright line, form consent and search results), brand name for the logo ("JENIQA") and the gold letters in it ("IQ"), tagline, phone, email (starts as info@jeniqa.co.ke), WhatsApp, address and map location.
+- Logo (optional; the JENIQA logo is built in: the ring-and-arrow mark with "JENIQA", "IQ" in gold, in white on the navy footer. Upload an image only to replace it). Ready-made logo files for letterheads, email signatures and social media are in the brand folder delivered with the theme.
 - Firm profile PDF. Download buttons stay hidden until it is uploaded.
 - **Forms tab**: the shared inbox that every form goes to (never a person's email), and the optional auto-reply.
 

@@ -96,7 +96,7 @@ function cwm_rows( $pairs, $keys = array( 'title', 'text' ) ) {
 
 function cwm_seed() {
 	// Site basics.
-	update_option( 'blogname', cwm_firm() );
+	update_option( 'blogname', cwm_brand() );
 	update_option( 'blogdescription', cwm_opt( 'tagline' ) );
 	update_option( 'timezone_string', 'Africa/Nairobi' );
 	update_option( 'date_format', 'j F Y' );
@@ -989,3 +989,50 @@ Please do not send confidential documents through our forms unless we ask for th
 These terms are governed by the laws of Kenya.
 TXT;
 }
+
+/**
+ * 1.3.0: sites installed before the JENIQA brand still say "Firm Name". Swap in the
+ * real names once, including the privacy and terms pages written at first setup.
+ */
+add_action(
+	'init',
+	function () {
+		if ( get_option( 'cwm_brand_130' ) || ! get_option( 'cwm_seeded' ) ) {
+			return;
+		}
+		update_option( 'cwm_brand_130', 1 );
+		$set  = (array) get_option( 'cwm_settings', array() );
+		$old  = isset( $set['firm_name'] ) ? trim( (string) $set['firm_name'] ) : '';
+		if ( '' !== $old && 'Firm Name' !== $old ) {
+			return; // The firm already set its own name; leave everything alone.
+		}
+		$d                    = cwm_setting_defaults();
+		$set['firm_name']     = $d['firm_name'];
+		$set['brand_name']    = $d['brand_name'];
+		$set['brand_accent']  = $d['brand_accent'];
+		if ( ! isset( $set['email'] ) || 'info@example.co.ke' === $set['email'] ) {
+			$set['email'] = $d['email'];
+		}
+		update_option( 'cwm_settings', $set );
+		update_option( 'blogname', $d['brand_name'] );
+		$pages = get_posts(
+			array(
+				'post_type'      => 'page',
+				'post_status'    => 'any',
+				'posts_per_page' => -1,
+				's'              => 'Firm Name',
+			)
+		);
+		foreach ( $pages as $p ) {
+			if ( false !== strpos( $p->post_content, 'Firm Name' ) ) {
+				wp_update_post(
+					array(
+						'ID'           => $p->ID,
+						'post_content' => str_replace( 'Firm Name', $d['firm_name'], $p->post_content ),
+					)
+				);
+			}
+		}
+	},
+	20
+);

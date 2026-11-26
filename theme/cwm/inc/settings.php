@@ -10,10 +10,12 @@ function cwm_settings_tabs() {
 		'firm'     => array(
 			'title'  => 'Firm details',
 			'fields' => array(
-				array( 'key' => 'firm_name', 'label' => 'Firm name', 'help' => 'Used in the header, footer, page titles, bylines ("[Firm name] Tax Team") and structured data. Keep the words "audit" or "auditors" out of it; Switch A controls those.' ),
+				array( 'key' => 'firm_name', 'label' => 'Registered company name', 'help' => 'The full legal name, e.g. "JENIQA Advisory Limited". Used in the copyright line, the privacy consent on forms and structured data. Keep the words "audit" or "auditors" out of it; Switch A controls those.' ),
+				array( 'key' => 'brand_name', 'label' => 'Brand name (logo)', 'help' => 'The short name shown in the logo, page titles, bylines ("JENIQA Tax Team") and WhatsApp greetings, e.g. "JENIQA". Leave empty to use the registered name.' ),
+				array( 'key' => 'brand_accent', 'label' => 'Gold letters in the logo', 'help' => 'Letters of the brand name shown in gold, e.g. "IQ". Leave empty for a single-colour name.' ),
 				array( 'key' => 'tagline', 'label' => 'Tagline' ),
 				array( 'key' => 'description', 'label' => 'One-line description', 'type' => 'textarea', 'rows' => 2, 'help' => 'Shown in the footer and used as the homepage meta description.' ),
-				array( 'key' => 'logo', 'label' => 'Logo (optional)', 'type' => 'media', 'library' => 'image', 'help' => 'Leave empty to use the built-in mark with the firm name. Upload an SVG or a PNG at least 400px wide.' ),
+				array( 'key' => 'logo', 'label' => 'Logo (optional)', 'type' => 'media', 'library' => 'image', 'help' => 'Leave empty to use the built-in JENIQA logo (mark plus brand name). Upload an SVG or a PNG at least 400px wide.' ),
 				array( 'key' => 'logo_footer', 'label' => 'Logo for dark backgrounds (optional)', 'type' => 'media', 'library' => 'image', 'help' => 'A white or light version for the navy footer.' ),
 				array( 'key' => 'phone', 'label' => 'Phone' ),
 				array( 'key' => 'email', 'label' => 'Public email address', 'type' => 'email' ),
@@ -129,7 +131,7 @@ add_action(
 	function ( $old, $new ) {
 		$new = wp_parse_args( (array) $new, cwm_setting_defaults() );
 		$old = wp_parse_args( (array) $old, cwm_setting_defaults() );
-		update_option( 'blogname', $new['firm_name'] );
+		update_option( 'blogname', '' !== trim( (string) $new['brand_name'] ) ? $new['brand_name'] : $new['firm_name'] );
 		update_option( 'blogdescription', $new['tagline'] );
 		if ( $old['show_team'] !== $new['show_team'] || $old['audit_state'] !== $new['audit_state'] ) {
 			update_option( 'cwm_flush_rewrite', 1 );

@@ -21,9 +21,9 @@ add_filter(
 add_filter(
 	'document_title_parts',
 	function ( $parts ) {
-		$parts['site'] = cwm_firm();
+		$parts['site'] = cwm_brand();
 		if ( is_front_page() ) {
-			$parts['title']   = cwm_firm();
+			$parts['title']   = cwm_brand();
 			$parts['tagline'] = cwm_opt( 'tagline' );
 			unset( $parts['site'] );
 		} elseif ( is_home() ) {
@@ -59,11 +59,11 @@ function cwm_meta_description() {
 		return $d ? $d : cwm_opt( 'description' );
 	}
 	if ( is_home() ) {
-		return 'Tax alerts, tax case analyses, ESG reporting updates, guides and news from ' . cwm_firm() . '.';
+		return 'Tax alerts, tax case analyses, ESG reporting updates, guides and news from ' . cwm_brand() . '.';
 	}
 	if ( is_category() ) {
 		$d = category_description();
-		return $d ? wp_strip_all_tags( $d ) : single_cat_title( '', false ) . ' from ' . cwm_firm() . '.';
+		return $d ? wp_strip_all_tags( $d ) : single_cat_title( '', false ) . ' from ' . cwm_brand() . '.';
 	}
 	return cwm_opt( 'description' );
 }
@@ -86,7 +86,7 @@ add_action(
 			$img = CWM_URI . '/assets/img/og-default.png';
 		}
 		echo "\n" . '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
-		echo '<meta property="og:site_name" content="' . esc_attr( cwm_firm() ) . '">' . "\n";
+		echo '<meta property="og:site_name" content="' . esc_attr( cwm_brand() ) . '">' . "\n";
 		echo '<meta property="og:title" content="' . esc_attr( $title ) . '">' . "\n";
 		echo '<meta property="og:description" content="' . esc_attr( $desc ) . '">' . "\n";
 		echo '<meta property="og:type" content="' . ( is_singular( 'post' ) ? 'article' : 'website' ) . '">' . "\n";
@@ -230,7 +230,8 @@ function cwm_schema_org() {
 	$org  = array(
 		'@type'           => 'AccountingService',
 		'@id'             => home_url( '/#organization' ),
-		'name'            => cwm_firm(),
+		'name'            => cwm_brand(),
+		'legalName'       => cwm_firm(),
 		'slogan'          => cwm_opt( 'tagline' ),
 		'description'     => cwm_opt( 'description' ),
 		'url'             => home_url( '/' ),

@@ -30,7 +30,7 @@
 
 <header class="site-header" id="site-header">
 	<div class="container site-header__inner">
-		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( cwm_firm() ); ?>, home">
+		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( cwm_brand() ); ?>, home">
 			<?php cwm_logo(); ?>
 		</a>
 
